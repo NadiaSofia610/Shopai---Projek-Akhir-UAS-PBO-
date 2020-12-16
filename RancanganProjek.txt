@@ -1,0 +1,73 @@
+Program Awal Ringkasan Deskrisi Projek 
+
+DESKRIPSI
+Projek yang akan kita buat ini adalah aplikasi e_commerce atau aplikasi yang digunakan untuk aktivitas 
+jual beli secara digital/elektronik. bisa kita lihat contoh2 aplikasi semacam ini seperti Shoppee,
+bukalapak, tokopedia, lazada, dan masih banyak lainnya 
+ 
+
+FITUR
+Buat Akun
+	#username
+	#nama asli
+	#tempat/tanggal lahir
+	#alamat
+		*jalan, desa, kec, kab, provinsi, negara
+	#jenis kelamin
+	#email
+	#password
+	#no. hp
+"Selamat! Akun Anda Berhasil dibuat"
+
+"Silahkan log in"
+			
+1.Login
+	#username (if)
+	#password (if)
+
+Jika username dan password benar maka, lanjut ke fitur
+Jika salah
+"Username atau Passoword Anda salah, Silahkan log in kembali"
+
+==================>	2.Toko
+==================>		-Dibuat setidaknya ada 1 toko dengan 5 barang beserta harganya
+				-nama barang
+				-harga barang
+==================>	3.Pembelian Barang
+==================>		-transaksi
+==================>	4.Isi Saldo
+==================>		-isi saldo
+				-return saldo
+==================>	5.Total transaksi
+==================>		-Jumlah Barang
+==================>		-Jumlah Uang
+==================>	6.Info Akun
+==================>		-nama
+				-username
+==================>		-tempat/tanggal lahir
+==================>		-alamat
+==================>			*jalan, desa, kec, kab, provinsi, negara
+==================>		-jenis kelamin
+				-email
+				-password
+				-no.hp
+				-saldo
+7.LogOut
+
+Diagram Proses
+1. Saat membuka aplikasi akan diarahkan untuk membuat akun terlebih dahulu
+2. muncul pilihan Pembelian barang, isi saldo (topUp), total transaksi, info akun
+
+
+Diagram Class
+1. Class DataPengguna
+	-method constructor()
+	-method to String()
+2. Class Toko
+3. class saldo
+	-method constructor(int saldo)
+	-method void tambahSaldo(int saldo)
+	-method void kurangSaldo(int saldo)
+	-method int getSaldo (int saldo)
+4.class Transaksi
+5.class Main
