@@ -1,5 +1,9 @@
 Program Awal Ringkasan Deskrisi Projek 
 
+Nama Anggota Kelompok
+1. Nadia Sofia
+2. Siti Nur Aisha
+
 DESKRIPSI
 Projek yang akan kita buat ini adalah aplikasi e_commerce atau aplikasi yang digunakan untuk aktivitas 
 jual beli secara digital/elektronik. bisa kita lihat contoh2 aplikasi semacam ini seperti Shoppee,
