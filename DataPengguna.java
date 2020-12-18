@@ -12,7 +12,7 @@ public class DataPengguna {
 
     private String username;
     private String nama;
-    private String TTL;
+    private String ttl;
     private String alamat;
     private String jenisKelamin;
     private String email;
@@ -25,10 +25,10 @@ public class DataPengguna {
         this.password = password;
     }
     
-    public DataPengguna(String nama, String TTL, String alamat, String jenisKelamin, String email, String noHP)
+    public DataPengguna(String nama, String ttl, String alamat, String jenisKelamin, String email, String noHP)
     {
         this.nama = nama;
-        this.TTL = TTL;
+        this.ttl = ttl;
         this.alamat = alamat;
         this.jenisKelamin = jenisKelamin;
         this.email = email;
@@ -45,9 +45,9 @@ public class DataPengguna {
         return this.nama;
     }
     
-    public String getTTL()
+    public String getTtl()
     {
-        return this.TTL;
+        return this.ttl;
     }
     
     public String getAlamat()
