@@ -2,7 +2,11 @@ Program Awal Ringkasan Deskrisi Projek
 
 Nama Anggota Kelompok
 1. Nadia Sofia
-2. Siti Nur Aisha
+2. Munawarah
+3. Putri Mahela
+4. Siti Nur Aisha
+5. Sopia Safira
+6. Samuel Wasini
 
 DESKRIPSI
 Projek yang akan kita buat ini adalah aplikasi e_commerce atau aplikasi yang digunakan untuk aktivitas 
