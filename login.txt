@@ -1,3 +1,0 @@
-Class login merupakan class yang paling pertama dieksekusi oleh program dimana user
-akan melakukan login sebelum masuk ke beranda aplikasi untuk melakukan pembelian
-barang
