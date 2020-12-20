@@ -155,9 +155,11 @@ public class dataobat extends javax.swing.JFrame {
         });
 
         jButton1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconcrud/icons8_Save_as_25px.png"))); // NOI18N
         jButton1.setText("Simpan");
 
         jButton2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconcrud/icons8_Plus_25px.png"))); // NOI18N
         jButton2.setText("Tambah");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,9 +168,11 @@ public class dataobat extends javax.swing.JFrame {
         });
 
         jButton3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconcrud/icons8_Available_Updates_25px.png"))); // NOI18N
         jButton3.setText("Edit");
 
         jButton4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconcrud/icons8_Trash_Can_25px.png"))); // NOI18N
         jButton4.setText("Hapus");
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -245,16 +249,14 @@ public class dataobat extends javax.swing.JFrame {
                                             .addComponent(hrgkontrak, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(hrgbeli, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(cmbsatuan, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(427, 427, 427))
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(44, 44, 44)
-                                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(53, 53, 53)
-                                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(30, 30, 30)
+                                        .addComponent(jButton2)
+                                        .addGap(29, 29, 29)
+                                        .addComponent(jButton3)
+                                        .addGap(40, 40, 40)
+                                        .addComponent(jButton4)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -317,13 +319,13 @@ public class dataobat extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel11)
                                 .addGap(31, 31, 31)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel4)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jButton1)
                                         .addComponent(jButton2)
                                         .addComponent(jButton3)
-                                        .addComponent(jButton4)))))))
+                                        .addComponent(jButton4))
+                                    .addComponent(jLabel4))))))
                 .addGap(66, 66, 66))
         );
 
