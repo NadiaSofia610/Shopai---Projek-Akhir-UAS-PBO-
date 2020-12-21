@@ -2,12 +2,12 @@ Program Awal Ringkasan Deskrisi Projek
 
 Kelompok 1
 Nama Anggota Kelompok
-1. Nadia Sofia
-2. Munawarah
-3. Putri Mahela
-4. Siti Nur Aisha
-5. Sopia Safira
-6. Samuel Wasini
+1. Nadia Sofia (1908107010009)
+2. Munawarah (1908107010002)
+3. Putri Mahela (1908107010007)
+4. Siti Nur Aisha (1908107010004)
+5. Sopia Safira (1908107010010)
+6. Samuel Wasini (1908107010095)
 
 DESKRIPSI
 Projek yang akan kita buat ini adalah aplikasi e_commerce atau aplikasi yang digunakan untuk aktivitas 
