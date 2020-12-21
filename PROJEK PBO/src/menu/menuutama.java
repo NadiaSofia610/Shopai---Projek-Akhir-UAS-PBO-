@@ -6,6 +6,8 @@
 package menu;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.Icon;
@@ -17,6 +19,9 @@ import javax.swing.JColorChooser;
  * @author User
  */
 public class menuutama extends javax.swing.JFrame {
+
+    private ActionListener taskPerformer;
+    private ActionListener ActionListener;
 
     /**
      * Creates new form menuutama
@@ -36,7 +41,7 @@ public class menuutama extends javax.swing.JFrame {
     }
     
     public void getJam(){
-        ActionListener taskPerformer;
+        ActionListener = taskPerformer;
         taskPerformer = new ActionListener(){
             public void actionPerformed(ActionEven evt){
                 SimpleDateFormat tgl = new SimpleDateFormat("EEEE-dd-MMM-YYYY");
@@ -62,6 +67,11 @@ public class menuutama extends javax.swing.JFrame {
                 String detik = no1_detik + Integer.toString(nilai_detik);
                 lbl_jam.setText("   " + jam + " : " + menit + " : " + detik + "   ");
                 lbl_tgl.setText(tgl.format(dt));
+            }
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         };
         new javax.swing.Timer(1000, (java.awt.event.ActionListener) taskPerformer).start();
