@@ -36,7 +36,8 @@ public class menuutama extends javax.swing.JFrame {
     }
     
     public void getJam(){
-        ActionListener taskPerformer = new ActionListener(){
+        ActionListener taskPerformer;
+        taskPerformer = new ActionListener(){
             public void actionPerformed(ActionEven evt){
                 SimpleDateFormat tgl = new SimpleDateFormat("EEEE-dd-MMM-YYYY");
                 String no1_jam = "";
@@ -45,7 +46,8 @@ public class menuutama extends javax.swing.JFrame {
                 Date dt = new Date();
                 int nilai_jam = dt.getHours();
                 int nilai_menit = dt.getMinutes();
-                int nilai_detik = dt.setSecond();
+                int nilai_detik;
+                nilai_detik = dt.getSeconds();
                 if (nilai_jam <= 9){
                     no1_jam="0";
                 }
