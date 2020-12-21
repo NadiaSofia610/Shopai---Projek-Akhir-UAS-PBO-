@@ -6,6 +6,11 @@
 package menu;
 
 import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JColorChooser;
 
 /**
  *
@@ -22,11 +27,42 @@ public class menuutama extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         jPanel6.setVisible(false);
         jPanel6.setEnabled(false);
+        getJam();
     }
 
     public void getbackgroundcolor(){
         Color c = JColorChooser.showDialog(null,"Background Color",jDesktopPane1.getBackground());
         jDesktopPane1.setBackground(c);
+    }
+    
+    public void getJam(){
+        ActionListener taskPerformer = new ActionListener(){
+            public void actionPerformed(ActionEven evt){
+                SimpleDateFormat tgl = new SimpleDateFormat("EEEE-dd-MMM-YYYY");
+                String no1_jam = "";
+                String no1_menit = "";
+                String no1_detik = "";
+                Date dt = new Date();
+                int nilai_jam = dt.getHours();
+                int nilai_menit = dt.getMinutes();
+                int nilai_detik = dt.setSecond();
+                if (nilai_jam <= 9){
+                    no1_jam="0";
+                }
+                if (nilai_menit <= 9){
+                    no1_menit="0";
+                }
+                if (nilai_detik <= 9){
+                    no1_detik="0";
+                }
+                String jam = no1_jam + Integer.toString(nilai_jam);
+                String menit = no1_menit + Integer.toString(nilai_menit);
+                String detik = no1_detik + Integer.toString(nilai_detik);
+                lbl_jam.setText("   " + jam + " : " + menit + " : " + detik + "   ");
+                lbl_tgl.setText(tgl.format(dt));
+            }
+        };
+        new javax.swing.Timer(1000, (java.awt.event.ActionListener) taskPerformer).start();
     }
     
     /**
@@ -55,7 +91,7 @@ public class menuutama extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lbl_tgl = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
@@ -73,7 +109,7 @@ public class menuutama extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
+        lbl_jam = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
@@ -284,10 +320,10 @@ public class menuutama extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconmenu/icons8_Calendar_25px.png"))); // NOI18N
         jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 57, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Tanggal");
-        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 67, 68, -1));
+        lbl_tgl.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lbl_tgl.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_tgl.setText("Tanggal");
+        jPanel4.add(lbl_tgl, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 68, -1));
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -495,25 +531,25 @@ public class menuutama extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(44, 62, 80));
 
-        jLabel19.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setText("Jam");
+        lbl_jam.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        lbl_jam.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_jam.setText("Jam");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(585, Short.MAX_VALUE)
-                .addComponent(jLabel19)
+                .addContainerGap(462, Short.MAX_VALUE)
+                .addComponent(lbl_jam, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel19)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(lbl_jam, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 730, 60));
@@ -603,11 +639,12 @@ public class menuutama extends javax.swing.JFrame {
 
     private void jLabel17MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MousePressed
         ImageIcon AS = new ImageIcon(getClass().getResource("/iconmenu/icons8_Long_Arrow_Up_25px.png")); 
+        Icon As = null;
         jLabel18.setIcon(As); 
         jLabel18.setVisible(true);
         jLabel18.setEnabled(true);
-        jLabel19.setVisible(false); 
-        jLabel19.setEnabled(false); 
+        lbl_jam.setVisible(false); 
+        lbl_jam.setEnabled(false); 
         jPanel6.setVisible(true);
         jPanel6.setEnabled(true);
     }//GEN-LAST:event_jLabel17MousePressed
@@ -615,8 +652,8 @@ public class menuutama extends javax.swing.JFrame {
     private void jPanel15MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel15MousePressed
         jLabel18.setVisible(false);
         jLabel18.setEnabled(false);
-        jLabel19.setVisible(true); 
-        jLabel19.setEnabled(true); 
+        lbl_jam.setVisible(true); 
+        lbl_jam.setEnabled(true); 
         jPanel6.setVisible(false);
         jPanel6.setEnabled(false);
     }//GEN-LAST:event_jPanel15MousePressed
@@ -642,12 +679,12 @@ public class menuutama extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel6MouseExited
 
     private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
-        jLabel9.setForeground(Color.white);
+        lbl_tgl.setForeground(Color.white);
         jLabel11.setBackground(new Color(255,102,0));
     }//GEN-LAST:event_jLabel5MouseEntered
 
     private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
-        jLabel9.setForeground(Color.black);
+        lbl_tgl.setForeground(Color.black);
         jLabel11.setBackground(new Color(170,0,0));
     }//GEN-LAST:event_jLabel5MouseExited
 
@@ -663,12 +700,12 @@ public class menuutama extends javax.swing.JFrame {
 
     private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
         jLabel17.setForeground(Color.white);
-        jLabel9.setBackground(new Color(255,102,0));
+        lbl_tgl.setBackground(new Color(255,102,0));
     }//GEN-LAST:event_jLabel2MouseEntered
 
     private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
         jLabel17.setForeground(Color.black);
-        jLabel9.setBackground(new Color(170,0,0));
+        lbl_tgl.setBackground(new Color(170,0,0));
     }//GEN-LAST:event_jLabel2MouseExited
 
     private void jLabel13MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MousePressed
@@ -724,7 +761,6 @@ public class menuutama extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -732,7 +768,6 @@ public class menuutama extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -748,5 +783,13 @@ public class menuutama extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel lbl_jam;
+    private javax.swing.JLabel lbl_tgl;
     // End of variables declaration//GEN-END:variables
+
+    private static class ActionEven {
+
+        public ActionEven() {
+        }
+    }
 }
