@@ -1,3 +1,10 @@
+
+import java.text.DateFormat;
+import java.text.FieldPosition;
+import java.text.ParsePosition;
+import java.util.Calendar;
+import java.util.Date;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,6 +22,50 @@ public class penjualan extends javax.swing.JFrame {
      */
     public penjualan() {
         initComponents();
+    }
+    
+    private void siapIsi(boolean a) {
+        tgltransaksi.setEnabled(a);
+        nonota.setEnabled(a);
+        nmpembeli.setEditable(a);
+        kdobat.setEnabled(a);
+        nmobat.setEditable(a);
+        hrgjual.setEditable(a);
+        jmlbeli.setEnabled(a);  
+    }
+    
+    private void bersih() {
+        kdobat.setText(null);
+        nmpembeli.setText(null);
+        nmobat.setText(null);
+        hrgjual.setText(null);
+        jmlbeli.setText(null);
+        ttotal.setText("0");
+        ttunai.setText("0");
+        tkembali.setText("0");
+    }
+    
+    public void hiden() {
+        nonota.setEnabled(false);
+        kdobat.setEnabled(false);
+        nmobat.setEditable(false);
+        hrgjual.setEditable(false);
+    }
+    
+    private void tampiltanggal() {
+        DateFormat tgl = new SimpleDataFormat("dd/MMMM/yyyy") {
+            @Override
+            public StringBuffer format(Date date, StringBuffer toAppendTo, FieldPosition fieldPosition) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public Date parse(String source, ParsePosition pos) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+        String htgl = tgl.format(Calendar.getInstance().getTime());
+        tgltransaksi.setText(htgl);
     }
 
     /**
