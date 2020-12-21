@@ -7,6 +7,8 @@ package gui;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
+import method.login.Enkripsi;
 import method.login.datapengguna;
 import method.login.penggunacontrol;
 
@@ -165,7 +167,32 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtuserActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        if (txtuser.getText().equals("") || txtpass.getText().equals("")) {
+        JOptionPane.showMessageDialog(null, "Input username dan password","pesan",JOptionPane.INFORMATION_MESSAGE);
+        }else {
+            try{
+                ListLogin = pc.cariLogin(txtuser.getText(), Enkripsi.getSHA1(txtpass.getText()));
+                if(ListLogin.size()>=1) {
+                if (ListLogin.get(0).gethakakses().equalsIgnoreCase("administrator")) {
+                menuutama mnu = new menuutama();
+                mnu.setVisible(true);
+                mnu.tampilUser(txtuser.getText());
+                dispose();
+                }else{
+                menuutama1 mnu1 = new menuutama1();
+                mnu1.setVisible(true);
+                mnu1.tampilUser(txtuser.getText());
+                dispose();
+                }
+                
+                }else{
+                    JOptionPane.showMessageDialog(null, "username atau password tidak ditemukan \n Harap ulangi", "Pesan", JOptionPane.WARNING_MESSAGE);
+                    txtpass.requestFocus();
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada" + e);
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
