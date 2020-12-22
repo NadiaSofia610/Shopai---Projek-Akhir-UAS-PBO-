@@ -5,19 +5,60 @@
  */
 package gui;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import method.dataobat.DataObat;
+import method.dataobat.ObatControl;
+
 /**
  *
  * @author ASUS
  */
 public class dataobat extends javax.swing.JFrame {
-
+    int x = 0;
+    private DefaultTableModel model;
+    ObatControl ob = new ObatControl();
+    DataObat DO = new DataObat();
+    List<DataObat> ListObat = new ArrayList<DataObat>();
+    
     /**
      * Creates new form dataobat
      */
     public dataobat() {
         initComponents();
+        buatTable();
+        showTable();
     }
 
+    public void buatTable(){
+        model = new DefaultTableModel();
+        model.addColumn("Kode Obat");
+        model.addColumn("Nama Obat");
+        model.addColumn("Satuan");
+        model.addColumn("Stok");
+        model.addColumn("Harga Kontrak");
+        model.addColumn("Harga Beli");
+        jTable1.setModel(model);
+    }
+    
+    private void showTable(){
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
+        ListObat.clear();
+        ListObat = ob.tampil();
+            for(x=0; x<ListObat.size() ; x++){
+                Object[] data = new Object[6];
+                data[0] = ListObat.get(x).getKdobat();
+                data[1] = ListObat.get(x).getNmobat();
+                data[2] = ListObat.get(x).getSatuan();
+                data[3] = ListObat.get(x).getJmlstok();
+                data[4] = ListObat.get(x).getHrgkontrak();
+                data[5] = ListObat.get(x).getHrgbeli();
+                model.addRow(data);
+            }
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -84,6 +125,7 @@ public class dataobat extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(44, 62, 80));
 
+        jTable1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

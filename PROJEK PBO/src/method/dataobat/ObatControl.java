@@ -26,7 +26,7 @@ public class ObatControl {
     public ObatControl(){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql//localhost:3306/dbapotek", "root","");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbapotek", "root", "");
             st = con.createStatement();
         } catch(Exception e){
             JOptionPane.showMessageDialog(null, "Koneksi database gagal, Terjadi Kesalahan pada : \n"+e);
@@ -35,7 +35,7 @@ public class ObatControl {
     
     public List tampil(){
         List LogObat = new ArrayList();
-        sql = "select kode_obat, satuan, jumlah_stok, harga_kontrak, harga_beli from tbdataobat order by idobat asc";
+        sql = "select kode_obat, nama_obat, satuan, jumlah_stok, harga_kontrak, harga_beli from tbdataobat order by idobat asc";
             try {
                 rs = st.executeQuery(sql);
                     while (rs.next()){
@@ -43,7 +43,7 @@ public class ObatControl {
                         Do.setKdobat(rs.getString("kode_obat"));
                         Do.setNmobat(rs.getString("nama_obat"));
                         Do.setSatuan(rs.getString("satuan"));
-                        Do.setJmlstok(rs.getInt("satuan"));
+                        Do.setJmlstok(rs.getInt("jumlah_stok"));
                         Do.setHrgkontrak(rs.getInt("harga_kontrak"));
                         Do.setHrgbeli(rs.getInt("harga_beli"));
                         LogObat.add(Do);
