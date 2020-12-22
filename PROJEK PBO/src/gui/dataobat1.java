@@ -19,24 +19,22 @@ import method.dataobat.ObatControl;
  *
  * @author ASUS
  */
-public class dataobat extends javax.swing.JFrame {
+public class dataobat1 extends javax.swing.JInternalFrame {
     int x = 0;
     private DefaultTableModel model;
     ObatControl ob = new ObatControl();
     DataObat DO = new DataObat();
     List<DataObat> ListObat = new ArrayList<DataObat>();
-    
     /**
-     * Creates new form dataobat
+     * Creates new form dataobat1
      */
-    public dataobat() throws SQLException{
+    public dataobat1() throws SQLException {
         initComponents();
         buatTable();
         showTable();
         bersih();
         siapIsi(false);
         tombolNormal();
-        this.setLocationRelativeTo(null);
         tampilx();
     }
 
@@ -97,20 +95,19 @@ public class dataobat extends javax.swing.JFrame {
     private void tombolNormal(){
         btnsimpan.setEnabled(false);
         btnedit.setEnabled(false);
-        jButton4.setEnabled(false);
+        btnhapus.setEnabled(false);
     }
     
     private void tombolKembali(){
         btnsimpan.setEnabled(true);
-        jButton4.setEnabled(true);
+        btnhapus.setEnabled(true);
         
     }
     
     public void tampilx() throws SQLException{
         int jmlobat = ob.getJumlahObat();
-        jLabel11.setText(String.valueOf(jmlobat));
+        txtjml.setText(String.valueOf(jmlobat));
     }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -120,8 +117,6 @@ public class dataobat extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -140,44 +135,19 @@ public class dataobat extends javax.swing.JFrame {
         btnsimpan = new javax.swing.JButton();
         btntambah = new javax.swing.JButton();
         btnedit = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnhapus = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         tcari = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        txtjml = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel1.setBackground(new java.awt.Color(170, 0, 0));
-
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
-        jLabel1.setText("Data Obat");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(410, 410, 410)
-                .addComponent(jLabel1)
-                .addContainerGap(425, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(142, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap())
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 100));
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         jPanel2.setBackground(new java.awt.Color(44, 62, 80));
 
-        jTable1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Times New Roman", 0, 19)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -189,6 +159,11 @@ public class dataobat extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 22)); // NOI18N
@@ -269,10 +244,20 @@ public class dataobat extends javax.swing.JFrame {
         btnedit.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btnedit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconcrud/icons8_Available_Updates_25px.png"))); // NOI18N
         btnedit.setText("Edit");
+        btnedit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneditActionPerformed(evt);
+            }
+        });
 
-        jButton4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconcrud/icons8_Trash_Can_25px.png"))); // NOI18N
-        jButton4.setText("Hapus");
+        btnhapus.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btnhapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconcrud/icons8_Trash_Can_25px.png"))); // NOI18N
+        btnhapus.setText("Hapus");
+        btnhapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnhapusActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -293,16 +278,21 @@ public class dataobat extends javax.swing.JFrame {
                 tcariActionPerformed(evt);
             }
         });
+        tcari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tcariKeyReleased(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Cari Berdasarkan");
 
-        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 47)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("100");
+        txtjml.setFont(new java.awt.Font("Times New Roman", 1, 47)); // NOI18N
+        txtjml.setForeground(new java.awt.Color(255, 255, 255));
+        txtjml.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtjml.setText("100");
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -355,12 +345,12 @@ public class dataobat extends javax.swing.JFrame {
                                         .addGap(29, 29, 29)
                                         .addComponent(btnedit)
                                         .addGap(40, 40, 40)
-                                        .addComponent(jButton4)))
+                                        .addComponent(btnhapus)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtjml, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(tcari, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 53, Short.MAX_VALUE)))
@@ -416,46 +406,84 @@ public class dataobat extends javax.swing.JFrame {
                                 .addGap(4, 4, 4)
                                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel11)
+                                .addComponent(txtjml)
                                 .addGap(31, 31, 31)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(btnsimpan)
                                         .addComponent(btntambah)
                                         .addComponent(btnedit)
-                                        .addComponent(jButton4))
+                                        .addComponent(btnhapus))
                                     .addComponent(jLabel4))))))
                 .addGap(66, 66, 66))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1050, 540));
+        jPanel1.setBackground(new java.awt.Color(170, 0, 0));
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        jLabel1.setText("Data Obat");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(410, 410, 410)
+                .addComponent(jLabel1)
+                .addContainerGap(425, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1050, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, 0)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btntambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntambahActionPerformed
-        if (btntambah.getText().equalsIgnoreCase("Tambah")){
-            btntambah.setText("Batal");
-            bersih();
-            siapIsi(true);
-            buatKdBarang();
-            nmobat.requestFocus();
-            tombolKembali();
-        }else{
-            btntambah.setText("Tambah");
-            bersih();
-            siapIsi(false);
-            tombolNormal();
-        }
-    }//GEN-LAST:event_btntambahActionPerformed
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int baris = jTable1.getSelectedRow();
+        kdobat.setText(jTable1.getModel().getValueAt(baris, 0).toString());
+        nmobat.setText(jTable1.getModel().getValueAt(baris, 1).toString());
+        cmbsatuan.setSelectedItem(jTable1.getModel().getValueAt(baris, 2).toString());
+        tstok.setText(jTable1.getModel().getValueAt(baris, 3).toString());
+        hrgkontrak.setText(jTable1.getModel().getValueAt(baris, 4).toString());
+        hrgbeli.setText(jTable1.getModel().getValueAt(baris, 5).toString());
+        siapIsi(false);
+        btnhapus.setEnabled(true);
+        btnedit.setEnabled(true);
+    }//GEN-LAST:event_jTable1MouseClicked
 
     private void cmbsatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbsatuanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbsatuanActionPerformed
-
-    private void tcariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tcariActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tcariActionPerformed
 
     private void btnsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsimpanActionPerformed
         if (nmobat.getText().isEmpty() || cmbsatuan.getSelectedItem().equals("") || tstok.getText().isEmpty() || hrgkontrak.getText().isEmpty()
@@ -500,56 +528,94 @@ public class dataobat extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnsimpanActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(dataobat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(dataobat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(dataobat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(dataobat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void btntambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntambahActionPerformed
+        if (btntambah.getText().equalsIgnoreCase("Tambah")){
+            btntambah.setText("Batal");
+            bersih();
+            siapIsi(true);
+            buatKdBarang();
+            nmobat.requestFocus();
+            tombolKembali();
+        }else{
+            btntambah.setText("Tambah");
+            bersih();
+            siapIsi(false);
+            tombolNormal();
         }
-        //</editor-fold>
+    }//GEN-LAST:event_btntambahActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new dataobat().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(dataobat.class.getName()).log(Level.SEVERE, null, ex);
-                }
+    private void btneditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditActionPerformed
+        if (btnedit.getText().equalsIgnoreCase("Edit")){
+            btnedit.setText("Batal");
+            siapIsi(true);
+            kdobat.setEnabled(false);
+            btntambah.setEnabled(false);
+            btnsimpan.setEnabled(true);
+            btnhapus.setEnabled(false);
+            btnedit.setEnabled(true);
+
+        }else{
+            btnedit.setText("Edit");
+            bersih();
+            siapIsi(false);
+            tombolNormal();
+        }
+    }//GEN-LAST:event_btneditActionPerformed
+
+    private void btnhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhapusActionPerformed
+        DO.setKdobat(kdobat.getText());
+        int pesan = JOptionPane.showConfirmDialog(null, "Data akan disimpan ?", "Konfirmasi", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        if (ob.deleteObat(DO)==1){
+            JOptionPane.showMessageDialog(null, "Data telah dihapus");
+            bersih();
+            siapIsi(false);
+            tombolNormal();
+            buatTable();
+            showTable();
+            try {
+                tampilx();
+            } catch (SQLException ex) {
+                Logger.getLogger(dataobat.class.getName()).log(Level.SEVERE, null, ex);
             }
-        });
-    }
+        }else{
+            JOptionPane.showMessageDialog(null, "Data gagal dihapus");
+        }
+    }//GEN-LAST:event_btnhapusActionPerformed
+
+    private void tcariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tcariActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tcariActionPerformed
+
+    private void tcariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tcariKeyReleased
+        String cari = null;
+        cari = tcari.getText();
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
+        ListObat.clear();
+        ListObat=ob.cariObat(cari);
+        for (int x=0 ; x<ListObat.size() ; x++){
+            Object[] data = new Object[6];
+            data[0] = ListObat.get(x).getKdobat();
+            data[1] = ListObat.get(x).getNmobat();
+            data[2] = ListObat.get(x).getSatuan();
+            data[3] = ListObat.get(x).getJmlstok();
+            data[4] = ListObat.get(x).getHrgkontrak();
+            data[5] = ListObat.get(x).getHrgbeli();
+            model.addRow(data);
+        }
+    }//GEN-LAST:event_tcariKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnedit;
+    private javax.swing.JButton btnhapus;
     private javax.swing.JButton btnsimpan;
     private javax.swing.JButton btntambah;
     private javax.swing.JComboBox<String> cmbsatuan;
     private javax.swing.JTextField hrgbeli;
     private javax.swing.JTextField hrgkontrak;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -567,5 +633,6 @@ public class dataobat extends javax.swing.JFrame {
     private javax.swing.JTextField nmobat;
     private javax.swing.JTextField tcari;
     private javax.swing.JTextField tstok;
+    private javax.swing.JLabel txtjml;
     // End of variables declaration//GEN-END:variables
 }

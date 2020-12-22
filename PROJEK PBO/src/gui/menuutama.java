@@ -8,8 +8,11 @@ package gui;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
 import javax.swing.JDesktopPane;
@@ -159,7 +162,7 @@ public class menuutama extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconmenu/icons8_Speed_25px.png"))); // NOI18N
         jLabel1.setText("Dashboard");
 
@@ -168,18 +171,18 @@ public class menuutama extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 134, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 113, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 310, 60));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 310, 60));
 
         jPanel4.setBackground(new java.awt.Color(170, 0, 0));
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -195,7 +198,7 @@ public class menuutama extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconmenu/icons8_Male_User_25px.png"))); // NOI18N
         jLabel2.setText("Pengguna");
 
@@ -204,22 +207,25 @@ public class menuutama extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 134, Short.MAX_VALUE))
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 117, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 374, 310, 60));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 310, 60));
 
         jPanel5.setBackground(new java.awt.Color(170, 0, 0));
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel5MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel5MouseEntered(evt);
             }
@@ -228,7 +234,7 @@ public class menuutama extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconmenu/icons8_Doctors_Bag_25px.png"))); // NOI18N
         jLabel3.setText("Data Obat");
 
@@ -237,18 +243,18 @@ public class menuutama extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 134, Short.MAX_VALUE))
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 108, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 310, 60));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 310, 60));
 
         jPanel6.setBackground(new java.awt.Color(170, 0, 0));
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -261,7 +267,7 @@ public class menuutama extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconmenu/icons8_Cash_in_Hand_25px.png"))); // NOI18N
         jLabel4.setText("Transaksi");
 
@@ -270,8 +276,8 @@ public class menuutama extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 134, Short.MAX_VALUE))
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 100, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,7 +287,7 @@ public class menuutama extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 310, -1));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 310, 60));
 
         jPanel8.setBackground(new java.awt.Color(170, 0, 0));
         jPanel8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -294,7 +300,7 @@ public class menuutama extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconmenu/icons8_Cash_in_Hand_25px.png"))); // NOI18N
         jLabel6.setText("Laporan Obat");
 
@@ -303,8 +309,8 @@ public class menuutama extends javax.swing.JFrame {
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 88, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,7 +320,7 @@ public class menuutama extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 310, 50));
+        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 630, 310, 60));
 
         jPanel9.setBackground(new java.awt.Color(170, 0, 0));
         jPanel9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -326,17 +332,17 @@ public class menuutama extends javax.swing.JFrame {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconmenu/icons8_Calendar_25px.png"))); // NOI18N
 
         lbl_tgl.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_tgl.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lbl_tgl.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         lbl_tgl.setForeground(new java.awt.Color(255, 255, 255));
         lbl_tgl.setText("Tanggal");
 
         lbluser.setBackground(new java.awt.Color(255, 255, 255));
-        lbluser.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lbluser.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         lbluser.setForeground(new java.awt.Color(255, 255, 255));
         lbluser.setText("Sebagai");
 
         jLabel12.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Jam");
 
@@ -355,7 +361,7 @@ public class menuutama extends javax.swing.JFrame {
                     .addComponent(jLabel12)
                     .addComponent(lbl_tgl)
                     .addComponent(lbluser))
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addContainerGap(190, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,7 +380,7 @@ public class menuutama extends javax.swing.JFrame {
                     .addComponent(jLabel12)))
         );
 
-        jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 196, 310, -1));
+        jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 320, -1));
 
         jPanel10.setBackground(new java.awt.Color(170, 0, 0));
         jPanel10.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -393,7 +399,7 @@ public class menuutama extends javax.swing.JFrame {
             }
         });
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menu1/icons8_User_20px.png"))); // NOI18N
         jLabel13.setText("Background");
 
@@ -403,7 +409,7 @@ public class menuutama extends javax.swing.JFrame {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addComponent(jLabel13)
-                .addGap(0, 87, Short.MAX_VALUE))
+                .addGap(0, 89, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -423,7 +429,7 @@ public class menuutama extends javax.swing.JFrame {
             }
         });
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menu1/icons8_About_20px.png"))); // NOI18N
         jLabel14.setText("About");
 
@@ -454,7 +460,7 @@ public class menuutama extends javax.swing.JFrame {
             }
         });
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menu1/icons8_Logout_Rounded_Left_20px.png"))); // NOI18N
         jLabel15.setText("Logout");
 
@@ -482,7 +488,7 @@ public class menuutama extends javax.swing.JFrame {
             }
         });
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menu1/icons8_About_20px.png"))); // NOI18N
         jLabel16.setText("Backup & Restore");
 
@@ -513,7 +519,7 @@ public class menuutama extends javax.swing.JFrame {
             }
         });
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menu1/icons8_About_20px.png"))); // NOI18N
         jLabel17.setText("Exit");
 
@@ -541,7 +547,7 @@ public class menuutama extends javax.swing.JFrame {
                     .addComponent(jPanel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 35, Short.MAX_VALUE))
+                .addGap(0, 20, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -594,7 +600,7 @@ public class menuutama extends javax.swing.JFrame {
 
         jPanel1.add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 40, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 630));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 790));
 
         jPanel2.setBackground(new java.awt.Color(44, 62, 80));
 
@@ -607,7 +613,7 @@ public class menuutama extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(502, Short.MAX_VALUE)
+                .addContainerGap(762, Short.MAX_VALUE)
                 .addComponent(lbl_jam, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -619,7 +625,7 @@ public class menuutama extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 780, 70));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1040, 70));
 
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
         jDesktopPane1.setEnabled(false);
@@ -628,14 +634,14 @@ public class menuutama extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 730, Short.MAX_VALUE)
+            .addGap(0, 1040, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
+            .addGap(0, 720, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 730, 560));
+        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 1040, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -791,6 +797,18 @@ public class menuutama extends javax.swing.JFrame {
         pg.setVisible(true);
         jDesktopPane1.add(pg);
     }//GEN-LAST:event_jPanel4MousePressed
+
+    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
+        jDesktopPane1.removeAll();
+        jDesktopPane1.repaint();
+        try {
+            dataobat1 do1 = new dataobat1();
+            jDesktopPane1.add(do1);
+            do1.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(menuutama.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jPanel5MouseClicked
 
     /**
      * @param args the command line arguments

@@ -8,6 +8,7 @@ package method.dataobat;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -100,5 +101,27 @@ public class ObatControl {
             JOptionPane.showMessageDialog(null, "Terjadi Kesalahan pada : \n"+e);
         }
         return logObat;
+    }
+    
+    public int deleteObat(DataObat e){
+        sql="delete from tbdataobat where kode_obat = '"+e.getKdobat()+"'";
+        int hasil=0;
+        try{
+            hasil = st.executeUpdate(sql);
+        } catch(Exception a){
+            JOptionPane.showMessageDialog(null, "Terjadi Kesalahan pada : \n"+a);
+        }
+        return hasil;
+    }
+    
+    public int getJumlahObat() throws SQLException{
+        sql = "select count(*) as jumlah_obat "+ "from tbdataobat";
+        rs = st.executeQuery(sql);
+        int jumlah;
+        while(rs.next()){
+            jumlah = rs.getInt("jumlah_obat");
+            return jumlah;
+        }
+        return 0;
     }
 }

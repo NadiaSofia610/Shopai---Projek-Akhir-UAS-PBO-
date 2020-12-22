@@ -170,7 +170,7 @@ public class login extends javax.swing.JFrame {
                     mnu.tampilUser(txtuser.getText());
                     dispose();
                 }else{
-                    menuutama1 mnu1 = new menuutama1();
+                    menuutama mnu1 = new menuutama();
                     mnu1.setVisible(true);
                     mnu1.tampilUser(txtuser.getText());
                     dispose();
