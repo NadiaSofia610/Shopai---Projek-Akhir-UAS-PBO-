@@ -13,6 +13,8 @@ import javax.swing.JOptionPane;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -53,4 +55,61 @@ public class penggunacontrol {
         return logLogin;
     }
     
+    public List cariid(int idpengguna) {
+        List logLogin = new ArrayList();
+        int result;
+        sql="select idpengguna from pengguna where idpengguna='"+idpengguna+"'";
+        try {
+            rs=st.executeQuery(sql);
+            while (rs.next()) {
+                datapengguna ep = new datapengguna();
+                ep.setidpengguna(rs.getInt("idpengguna"));
+                logLogin.add(ep);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan pencarian id, pada" + e);
+        }
+        return logLogin;
+    }
+    
+    public int tambah(datapengguna e) {
+        sql="insert into pengguna values('"+e.getidpengguna()+"','"+e.getusername()+"','"+e.getpassword()+"','"+e.gethakakses()+"')";
+        int hasil=0;
+        try {
+            hasil=st.executeUpdate(sql);
+        } catch (Exception a) {
+            Logger.getLogger(penggunacontrol.class.getName()).log(Level.SEVERE, null, a);
+        }
+        return hasil;
+    }
+    
+    public int deletepengguna(datapengguna e) {
+        sql="delete pengguna where idpengguna='"+e.getidpengguna()+"'";
+        int hasil=0;
+        try {
+            hasil=st.executeUpdate(sql);
+        } catch (Exception a) {
+            Logger.getLogger(penggunacontrol.class.getName()).log(Level.SEVERE, null, a);
+        }
+        return hasil;
+    }
+    
+    public List tampil() {
+        List logObat = new ArrayList();
+        sql="select idpengguna, username,password,hakakses from pengguna order by idpengguna asc";
+        try{
+            rs=st.executeQuery(sql);
+            while (true) {
+                datapengguna dp = new datapengguna();
+                dp.setidpengguna(rs.getInt("idpengguna"));
+                dp.setusername(rs.getString("username"));
+                dp.setpassword(rs.getString("password"));
+                dp.sethakakses(rs.getString("hakakses"));
+                logObat.add(dp);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Terjadi keasalahan tampil, pada:" + e);
+        }
+        return logObat;
+    }
 }

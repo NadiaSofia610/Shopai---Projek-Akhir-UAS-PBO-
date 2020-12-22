@@ -30,8 +30,8 @@ public class menuutama extends javax.swing.JFrame {
         getJam();
     }
     
-    public void tampilUser(String user){
-    lbluser.setText(user);
+    public void tampilUser(String user) {
+        lbluser.setText(user);
     }
 
     public void getbackgroundcolor(){
@@ -101,6 +101,8 @@ public class menuutama extends javax.swing.JFrame {
         lbluser = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
@@ -108,8 +110,7 @@ public class menuutama extends javax.swing.JFrame {
         jPanel13 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
-        jPanel10 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         jPanel15 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -346,6 +347,41 @@ public class menuutama extends javax.swing.JFrame {
         jPanel9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel10.setBackground(new java.awt.Color(170, 0, 0));
+        jPanel10.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel10MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel10MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel10MousePressed(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconmenu1/icons8_Shutdown_20px.png"))); // NOI18N
+        jLabel12.setText("Keluar");
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addComponent(jLabel12)
+                .addGap(0, 80, Short.MAX_VALUE))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel12))
+        );
+
+        jPanel9.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 150, -1));
+
         jPanel11.setBackground(new java.awt.Color(170, 0, 0));
         jPanel11.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -422,52 +458,31 @@ public class menuutama extends javax.swing.JFrame {
         jPanel14.setBackground(new java.awt.Color(170, 0, 0));
         jPanel14.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jPanel10.setBackground(new java.awt.Color(170, 0, 0));
-        jPanel10.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel10.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconmenu1/icons8_SQL_20px.png"))); // NOI18N
+        jLabel16.setText("Backup & Restore");
+        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel10MouseEntered(evt);
+                jLabel16MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel10MouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPanel10MousePressed(evt);
+                jLabel16MouseExited(evt);
             }
         });
-
-        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconmenu1/icons8_Shutdown_20px.png"))); // NOI18N
-        jLabel12.setText("Keluar");
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addComponent(jLabel12)
-                .addGap(0, 104, Short.MAX_VALUE))
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel12))
-        );
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addComponent(jLabel16)
+                .addGap(0, 8, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel16))
         );
 
         jPanel9.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 150, -1));
@@ -578,6 +593,16 @@ public class menuutama extends javax.swing.JFrame {
     private void jPanel10MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MousePressed
         System.exit(0);
     }//GEN-LAST:event_jPanel10MousePressed
+
+    private void jLabel16MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseEntered
+        jLabel16.setForeground(Color.white);        
+        jPanel14.setBackground(new Color(255,102,0));
+    }//GEN-LAST:event_jLabel16MouseEntered
+
+    private void jLabel16MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseExited
+        jLabel16.setForeground(Color.black);
+        jPanel14.setBackground(new Color(170,0,0));
+    }//GEN-LAST:event_jLabel16MouseExited
 
     private void jPanel13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel13MouseEntered
         jLabel15.setForeground(Color.white);        
@@ -738,6 +763,7 @@ public class menuutama extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;

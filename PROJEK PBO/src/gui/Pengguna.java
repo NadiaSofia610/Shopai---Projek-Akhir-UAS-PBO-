@@ -5,17 +5,54 @@
  */
 package gui;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import method.login.datapengguna;
+import method.login.penggunacontrol;
+
 /**
  *
  * @author User
  */
 public class Pengguna extends javax.swing.JInternalFrame {
+    int x = 0;
+    private DefaultTableModel model;
+    penggunacontrol pc = new penggunacontrol();
+    datapengguna dp = new datapengguna();
+    List<datapengguna> listpengguna = new ArrayList<datapengguna>();
 
     /**
      * Creates new form Pengguna
      */
     public Pengguna() {
         initComponents();
+        buattable();
+        showtable();
+    }
+    
+    private void buattable() {
+        model = new DefaultTableModel();
+        model.addColumn("id pengguna");
+        model.addColumn("username");
+        model.addColumn("password");
+        model.addColumn("hak akses");
+        jTable1.setModel(model);
+    }
+    
+    private void showtable(){
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
+        listpengguna.clear();
+        listpengguna=pc.tampil();
+        for(x = 0; x < listpengguna.size(); x++) {
+            Object[] data = new Object[4];
+            data[0] = listpengguna.get(x).getidpengguna();
+            data[1] = listpengguna.get(x).getusername();
+            data[2] = listpengguna.get(x).getpassword();
+            data[3] = listpengguna.get(x).gethakakses();
+            model.addRow(data);
+        }
     }
 
     /**
