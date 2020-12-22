@@ -79,4 +79,26 @@ public class ObatControl {
         }
         return hasil;
     }
+    
+    public List cariObat(String cari){
+        List logObat = new ArrayList();
+        sql = "select kode_obat, nama_obat, satuan, jumlah_stok, harga_kontrak, harga_beli from tbdataobat where satuan "
+                +"like '%"+cari+"' or nama_obat like '%"+cari+"%'";
+        try{
+            rs=st.executeQuery(sql);
+            while(rs.next()){
+                DataObat Do = new DataObat();
+                Do.setKdobat(rs.getString("kode_obat"));
+                Do.setNmobat(rs.getString("nama_obat"));
+                Do.setSatuan(rs.getString("satuan"));
+                Do.setJmlstok(rs.getInt("jumlah_stok"));
+                Do.setHrgkontrak(rs.getInt("harga_kontrak"));
+                Do.setHrgbeli(rs.getInt("harga_beli"));
+                logObat.add(Do);
+            }
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Terjadi Kesalahan pada : \n"+e);
+        }
+        return logObat;
+    }
 }

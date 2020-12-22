@@ -294,6 +294,11 @@ public class dataobat extends javax.swing.JFrame {
                 tcariActionPerformed(evt);
             }
         });
+        tcari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tcariKeyReleased(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -526,6 +531,25 @@ public class dataobat extends javax.swing.JFrame {
             tombolNormal();
         }
     }//GEN-LAST:event_btneditActionPerformed
+
+    private void tcariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tcariKeyReleased
+        String cari = null;
+        cari = tcari.getText();
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
+        ListObat.clear();
+        ListObat=ob.cariObat(cari);
+        for (int x=0 ; x<ListObat.size() ; x++){
+            Object[] data = new Object[6];
+            data[0] = ListObat.get(x).getKdobat();
+            data[1] = ListObat.get(x).getNmobat();
+            data[2] = ListObat.get(x).getSatuan();
+            data[3] = ListObat.get(x).getJmlstok();
+            data[4] = ListObat.get(x).getHrgkontrak();
+            data[5] = ListObat.get(x).getHrgbeli();
+            model.addRow(data);
+        }
+    }//GEN-LAST:event_tcariKeyReleased
 
     /**
      * @param args the command line arguments
