@@ -7,6 +7,7 @@ package gui;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import method.dataobat.DataObat;
 import method.dataobat.ObatControl;
@@ -56,9 +57,36 @@ public class dataobat extends javax.swing.JFrame {
                 data[4] = ListObat.get(x).getHrgkontrak();
                 data[5] = ListObat.get(x).getHrgbeli();
                 model.addRow(data);
-            }
-        
+            }   
     }
+    
+    private void buatKdBarang(){
+        ListObat = ob.tampil();
+        int a = ListObat.size()-1;
+        int no = Integer.parseInt(ListObat.get(a).getKdobat().replace("A-", "")+1);
+        kdobat.setText("A-"+no);
+        kdobat.setEnabled(false);
+    }
+    
+    private void siapIsi(boolean a){
+        kdobat.setEnabled(a);
+        nmobat.setEnabled(a);
+        cmbsatuan.setEnabled(a);
+        tstok.setEnabled(a);
+        hrgkontrak.setEnabled(a);
+        hrgbeli.setEnabled(a);
+    }
+    
+    private void bersih(){
+        kdobat.setText("");
+        nmobat.setText("");
+        cmbsatuan.setSelectedItem("Pilih");
+        tstok.setText("");
+        hrgkontrak.setText("");
+        hrgbeli.setText("");
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -199,6 +227,11 @@ public class dataobat extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconcrud/icons8_Save_as_25px.png"))); // NOI18N
         jButton1.setText("Simpan");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconcrud/icons8_Plus_25px.png"))); // NOI18N
@@ -387,6 +420,22 @@ public class dataobat extends javax.swing.JFrame {
     private void tcariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tcariActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tcariActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (nmobat.getText().isEmpty() || cmbsatuan.getSelectedItem().equals("") || tstok.getText().isEmpty() || hrgkontrak.getText().isEmpty()
+                ||hrgbeli.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Data Harus Lengkap", "Aplikasi Apotek", JOptionPane.INFORMATION_MESSAGE);
+            
+        }else{
+            DO.setKdobat(kdobat.getText());
+            DO.setNmobat(nmobat.getText());
+            DO.setSatuan(cmbsatuan.getSelectedItem().toString());
+            DO.setJmlstok(Integer.parseInt(tstok.getText()));
+            DO.setHrgkontrak(Integer.parseInt(hrgkontrak.getText()));
+            DO.setHrgbeli(Integer.parseInt(hrgbeli.getText()));
+            
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

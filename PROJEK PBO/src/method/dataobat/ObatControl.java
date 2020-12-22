@@ -56,4 +56,16 @@ public class ObatControl {
             return LogObat;
     }
     
+    public int tambahobat(DataObat e){
+        sql = "insert into tbdataobat (kode_obat, nama_obat, satuan, jumlah_stok, harga_kontrak, harga_beli) values('"+e.getKdobat()+"','"+e.getNmobat()
+                +"','"+e.getSatuan()+"','"+e.getHrgkontrak()+"','"+e.getHrgbeli()+"')";
+        int hasil = 0;
+        try{
+            hasil = st.executeUpdate(sql);
+        }catch(Exception a){
+            JOptionPane.showMessageDialog(null, "Terjadi Kesalahan pada : \n"+a);
+        }
+        return hasil;
+    }
+    
 }
