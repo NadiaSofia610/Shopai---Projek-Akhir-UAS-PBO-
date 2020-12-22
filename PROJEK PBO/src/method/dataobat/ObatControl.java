@@ -58,7 +58,7 @@ public class ObatControl {
     
     public int tambahobat(DataObat e){
         sql = "insert into tbdataobat (kode_obat, nama_obat, satuan, jumlah_stok, harga_kontrak, harga_beli) values('"+e.getKdobat()+"','"+e.getNmobat()
-                +"','"+e.getSatuan()+"','"+e.getHrgkontrak()+"','"+e.getHrgbeli()+"')";
+                +"','"+e.getSatuan()+"','"+e.getJmlstok()+"','"+e.getHrgkontrak()+"','"+e.getHrgbeli()+"')";
         int hasil = 0;
         try{
             hasil = st.executeUpdate(sql);
@@ -68,4 +68,15 @@ public class ObatControl {
         return hasil;
     }
     
+    public int editObat(DataObat e){
+        sql = "update tbdataobat set nama_obat='"+e.getNmobat()+"',satuan='"+e.getSatuan()+"',jumlah_stok='"+e.getJmlstok()
+                +"',harga_kontrak='"+e.getHrgkontrak()+"',harga_beli='"+e.getHrgbeli()+"'where kode_obat='"+e.getKdobat()+"'";
+        int hasil = 0;
+        try{
+            hasil = st.executeUpdate(sql);
+        } catch (Exception a){
+            JOptionPane.showMessageDialog(null, "Terjadi Kesalahan pada : \n"+a);
+        }
+        return hasil;
+    }
 }
