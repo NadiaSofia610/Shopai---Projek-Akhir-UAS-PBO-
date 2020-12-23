@@ -26,7 +26,7 @@ FROM
 		<band/>
 	</background>
 	<title>
-		<band height="76">
+		<band height="85">
 			<staticText>
 				<reportElement x="24" y="-12" width="515" height="49" uuid="4a6a6d17-2dbc-4348-88a4-7ea9c907bfa8"/>
 				<textElement textAlignment="Center">
@@ -41,10 +41,84 @@ FROM
 				</textElement>
 				<text><![CDATA[DINAS KESEHATAN]]></text>
 			</staticText>
+			<line>
+				<reportElement x="0" y="72" width="553" height="1" uuid="66513f19-79be-4831-aaa9-90a1a9fcd913"/>
+			</line>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="69"/>
+		<band height="158">
+			<staticText>
+				<reportElement x="11" y="10" width="115" height="24" uuid="e1ae7593-cb63-4259-abe4-af2ec1cceef0"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Puskesmas      :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="44" width="115" height="24" uuid="81c83580-8d10-4943-a76f-1ff10eaab4ee"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kecamatan                :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="82" width="115" height="24" uuid="cc5a1221-248e-4204-80d9-365c2176091d"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kabupaten                 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="120" width="115" height="24" uuid="eca00196-e30a-434a-bbc4-8aa1320a4ad3"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Provinsi                      :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="10" width="115" height="24" uuid="1a3d97d4-3b19-4022-aa06-e18d842edeb7"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Puskesmas X]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="44" width="115" height="24" uuid="fa39c0f5-73b5-4bb6-9710-5826245db175"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Kecamatan x]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="82" width="115" height="24" uuid="26441648-5335-4316-bdad-26f1849361ab"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Kabupaten X]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="120" width="115" height="24" uuid="c25a5161-8a1b-4bdc-89af-f230c603861b"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Sulawesi Tengah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="354" y="10" width="86" height="24" uuid="2078c407-de5c-46f0-ac13-e58d5e96df2b"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal        :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="157" width="553" height="1" uuid="7e1b1cf1-5890-47e7-9bd7-23df8e5d2fe0"/>
+			</line>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="449" y="10" width="100" height="13" uuid="2598d577-4dec-4ae3-9f29-d5e3572adccb"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="26">
@@ -100,6 +174,9 @@ FROM
 				</textElement>
 				<text><![CDATA[Harga Beli]]></text>
 			</staticText>
+			<line>
+				<reportElement x="1" y="21" width="552" height="1" uuid="ba2d5dea-3e9a-4879-916e-52762b8da9f1"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
