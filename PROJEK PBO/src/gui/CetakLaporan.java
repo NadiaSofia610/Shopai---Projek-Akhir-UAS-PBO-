@@ -5,6 +5,12 @@
  */
 package gui;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import method.dataobat.DataObat;
+import method.dataobat.ObatControl;
+import method.report.reportcontrol;
 /**
  *
  * @author ASUS
@@ -132,7 +138,13 @@ public class CetakLaporan extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        if (rbsemua.isSelected()) {
+            rc.cetakSeluruhObat(); 
+        } else if (rbsatuan.isSelected()){
+            
+        } else {
+             JOptionPane.showMessageDialog(null, "Pilih Kriteria Cetak");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -182,4 +194,8 @@ public class CetakLaporan extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbsatuan;
     private javax.swing.JRadioButton rbsemua;
     // End of variables declaration//GEN-END:variables
+reportcontrol rc = new reportcontrol();
+ObatControl oc = new ObatControl();
+DataObat DO = new DataObat();
+List <DataObat> listObat = new ArrayList<DataObat>();
 }

@@ -12,6 +12,14 @@ import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
+
 
 /**
  *
@@ -38,10 +46,15 @@ public void cetakSeluruhObat(){
         String sumber;
         String tujuan;
         sumber= "src/Report/DataObat.jrxml";
+        tujuan = "src/Report/DataObat.html";
         Map parms = new HashMap();
         JasperReport jr = JasperCompileManager.compileReport(sumber);
-        
-    } catch (Exception e) {
+        JasperPrint jp = JasperFillManager.fillReport(jr, parms, con);
+        JasperExportManager.exportReportToHtmlFile(jp, tujuan);
+        JasperViewer.viewReport(jp, false);
+    } catch (Exception xe) {
+        JOptionPane.showMessageDialog(null, "Koneksi Database Gagal, terjadi Kesalahan Pada :\n" +xe);
+    }
     
 }
 
