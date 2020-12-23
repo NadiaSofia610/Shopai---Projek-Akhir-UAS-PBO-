@@ -228,6 +228,11 @@ public class menuutama extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconmenu/icons8_Male_User_25px.png"))); // NOI18N
         jLabel4.setText("Pengguna");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel4MousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -717,6 +722,12 @@ public class menuutama extends javax.swing.JFrame {
     private void jLabel13MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MousePressed
         getbackgroundcolor();
     }//GEN-LAST:event_jLabel13MousePressed
+
+    private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
+    Pengguna pg = new Pengguna();
+    pg.setVisible(true);
+    jDesktopPane1.add(pg);
+    }//GEN-LAST:event_jLabel4MousePressed
 
     /**
      * @param args the command line arguments

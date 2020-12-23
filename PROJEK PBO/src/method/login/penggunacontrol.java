@@ -99,7 +99,7 @@ public class penggunacontrol {
         sql="select idpengguna, username,password,hakakses from pengguna order by idpengguna asc";
         try{
             rs=st.executeQuery(sql);
-            while (true) {
+            while (rs.next()) {
                 datapengguna dp = new datapengguna();
                 dp.setidpengguna(rs.getInt("idpengguna"));
                 dp.setusername(rs.getString("username"));
