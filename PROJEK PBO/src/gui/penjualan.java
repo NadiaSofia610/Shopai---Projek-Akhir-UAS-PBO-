@@ -2,8 +2,15 @@
 import java.text.DateFormat;
 import java.text.FieldPosition;
 import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import method.beli.belicontrol;
+import method.beli.databeli;
+import method.dataobat.DataObat;
+import method.dataobat.ObatControl;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -53,19 +60,21 @@ public class penjualan extends javax.swing.JFrame {
     }
     
     private void tampiltanggal() {
-        DateFormat tgl = new SimpleDataFormat("dd/MMMM/yyyy") {
-            @Override
-            public StringBuffer format(Date date, StringBuffer toAppendTo, FieldPosition fieldPosition) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public Date parse(String source, ParsePosition pos) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        };
+        DateFormat tgl = new SimpleDateFormat("dd/MMMM/yyyy");
         String htgl = tgl.format(Calendar.getInstance().getTime());
         tgltransaksi.setText(htgl);
+    }
+    
+    private void buatNoNota() {
+        ListDb = bc.tampil();
+        if(ListDb.isEmpty()) {
+            nonota.setText("N-"+1);
+        } else {
+            int a = ListDb.size()-1;
+            int no = Integer.parseInt(ListDb.get(a).getnonota().replace("N-", ""))+1;
+            nonota.setText("No-"+no);
+            nonota.setEnabled(false);
+        }
     }
 
     /**
@@ -690,4 +699,9 @@ public class penjualan extends javax.swing.JFrame {
     private javax.swing.JTextField ttotal;
     private javax.swing.JTextField ttunai;
     // End of variables declaration//GEN-END:variables
+belicontrol bc = new belicontrol();
+ObatControl ob = new ObatControl();
+
+List<databeli> ListDb = new ArrayList<databeli>();
+List<DataObat> ListObat = new ArrayList<DataObat>();
 }
