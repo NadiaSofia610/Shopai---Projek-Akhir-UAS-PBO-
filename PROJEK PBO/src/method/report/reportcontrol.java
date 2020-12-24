@@ -58,4 +58,22 @@ public void cetakSeluruhObat(){
     
 }
 
+public void cetakPersatuan(String satuan) throws JRException {
+    try {
+      String sumber;
+        String tujuan;
+        sumber = "src/Report/ObatPersatuan.jrxml";
+        tujuan = "src/Report/ObatPersatuan.html";
+        Map parms = new HashMap();
+        parms.put("Satuan", satuan);
+        JasperReport jr = JasperCompileManager.compileReport(sumber);
+        JasperPrint jp = JasperFillManager.fillReport(jr, parms, con);
+        JasperExportManager.exportReportToHtmlFile(jp, tujuan);
+        JasperViewer.viewReport(jp, false);
+    } catch (Exception xe) {
+        JOptionPane.showMessageDialog(null, "Koneksi Database Gagal, terjadi Kesalahan Pada :\n" +xe );
+    }
+}
+
+
 }

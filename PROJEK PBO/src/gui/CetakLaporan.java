@@ -7,10 +7,13 @@ package gui;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import method.dataobat.DataObat;
 import method.dataobat.ObatControl;
 import method.report.reportcontrol;
+import net.sf.jasperreports.engine.JRException;
 /**
  *
  * @author ASUS
@@ -22,6 +25,12 @@ public class CetakLaporan extends javax.swing.JFrame {
      */
     public CetakLaporan() {
         initComponents();
+        isicombo();
+    }
+    
+    public void isicombo() {
+        List listobat = oc.tampilSatuan();
+        if 
     }
 
     /**
@@ -141,7 +150,11 @@ public class CetakLaporan extends javax.swing.JFrame {
         if (rbsemua.isSelected()) {
             rc.cetakSeluruhObat(); 
         } else if (rbsatuan.isSelected()){
-            
+            try {
+                rc.cetakPersatuan(cmbsatuan.getSelectedItem().toString());
+            } catch (JRException ex) {
+                Logger.getLogger(CetakLaporan.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
              JOptionPane.showMessageDialog(null, "Pilih Kriteria Cetak");
         }

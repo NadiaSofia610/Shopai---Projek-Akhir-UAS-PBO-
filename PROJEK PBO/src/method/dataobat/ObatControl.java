@@ -116,12 +116,33 @@ public class ObatControl {
     
     public int getJumlahObat() throws SQLException{
         sql = "select count(*) as jumlah_obat "+ "from tbdataobat";
-        rs = st.executeQuery(sql);
         int jumlah;
-        while(rs.next()){
-            jumlah = rs.getInt("jumlah_obat");
-            return jumlah;
+        try {
+            rs = st.executeQuery(sql);
+            While(rs.next()) {
+              jumlah = rs.getInt("jumlah_obat");  
+              return jumlah;
+            }
+        } catch (Exception a) {
+             JOptionPane.showMessageDialog(null, "Terjadi Kesalahan pada: \n" +a);
+           
         }
         return 0;
+    }
+    
+    public List tampilSatuan() {
+        List logObat = new ArrayList();
+        sql = "select distict (satuan) from tbdataobat order by idobat asc";
+        try {
+            rs = st.excuteQuery(sql);
+            while(rs.next()){
+                DataObat eb = new DataObat();
+                eb.setSatuan(rs.getString("satuan"));
+                logObat.add(eb);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Terjadi Kesalahan pada: \n" +e);
+        }
+        return logObat;
     }
 }
