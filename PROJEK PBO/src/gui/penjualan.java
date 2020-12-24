@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 import method.beli.belicontrol;
 import method.beli.databeli;
 import method.dataobat.DataObat;
@@ -29,6 +30,9 @@ public class penjualan extends javax.swing.JFrame {
      */
     public penjualan() {
         initComponents();
+        tstok.setVisible(false);
+        tombolHiden();
+        hiden();
     }
     
     private void siapIsi(boolean a) {
@@ -37,8 +41,7 @@ public class penjualan extends javax.swing.JFrame {
         nmpembeli.setEditable(a);
         kdobat.setEnabled(a);
         nmobat.setEditable(a);
-        hrgjual.setEditable(a);
-        jmlbeli.setEnabled(a);  
+        hrgjual.setEditable(a);  
     }
     
     private void bersih() {
@@ -76,6 +79,44 @@ public class penjualan extends javax.swing.JFrame {
             nonota.setEnabled(false);
         }
     }
+    
+    public void tombolHiden() {
+        btntambah.setEnabled(false);
+        btnkurang.setEnabled(false);
+        btnsimpan.setEnabled(false);
+        tgltransaksi.setEnabled(false);
+    }
+    
+    public void tombolNormal() {
+        btntambah.setEnabled(false);
+        btnkurang.setEnabled(false);
+    }
+    
+    public void buatTableModel() {
+        model = new DefaultTableModel();
+        model.addColumn("Kode Obat");
+        model.addColumn("Nama Obat");
+        model.addColumn("Satuan");
+        model.addColumn("Jumlah Stok");
+        model.addColumn("Harga Jual");
+        jTable2.setModel(model);
+    }
+    
+    private void tampilobat() {
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
+        ListObat.clear();
+        
+        for(int x=0; x<ListObat.size(); x++) {
+            Object[] data = new Object[5];
+            data[0] = ListObat.get(x).getKdobat();
+            data[1] = ListObat.get(x).getNmobat();
+            data[2] = ListObat.get(x).getSatuan();
+            data[3] = ListObat.get(x).getJmlstok();
+            data[4] = ListObat.get(x).getHrgbeli();
+            model.addRow(data);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -93,7 +134,7 @@ public class penjualan extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jLabel12 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtcari1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -131,7 +172,8 @@ public class penjualan extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(170, 0, 0));
 
-        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Data Obat");
 
@@ -170,13 +212,13 @@ public class penjualan extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Cari Data Obat :");
 
-        jTextField1.setBackground(new java.awt.Color(44, 62, 80));
-        jTextField1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtcari1.setBackground(new java.awt.Color(44, 62, 80));
+        txtcari1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtcari1.setForeground(new java.awt.Color(255, 255, 255));
+        txtcari1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtcari1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtcari1ActionPerformed(evt);
             }
         });
 
@@ -189,9 +231,9 @@ public class penjualan extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 976, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62)
-                        .addComponent(jTextField1)))
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(txtcari1)))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -202,8 +244,8 @@ public class penjualan extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-                    .addComponent(jTextField1))
-                .addContainerGap(20, Short.MAX_VALUE))
+                    .addComponent(txtcari1))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jDialog1.getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1050, 540));
@@ -607,7 +649,12 @@ public class penjualan extends javax.swing.JFrame {
     }//GEN-LAST:event_jmlbeliActionPerformed
 
     private void btnpilihActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpilihActionPerformed
-        // TODO add your handling code here:
+        buatTableModel();
+        tampilobat();
+        txtcari1.setText(null);
+        jDialog1.setVisible(true);
+        jDialog1.setBounds(300, 300, 472, 390);
+        txtcari1.requestFocus();
     }//GEN-LAST:event_btnpilihActionPerformed
 
     private void btnsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsimpanActionPerformed
@@ -623,24 +670,23 @@ public class penjualan extends javax.swing.JFrame {
                 tampiltanggal();
                 buatNoNota();
                 nmpembeli.requestFocus();
-                btnsimpan.setEnabled(false);
-                btntambah.setEnabled(false);
-                btnkurang.setEnabled(false);
-                btnpilih.setEnabled(false);
+                btntambah.setEnabled(true);
+                btnkurang.setEnabled(true);
                 tgltransaksi.setEditable(false);
         } else {
             bersih();
             siapIsi(false);
             btntambahobat.setText("tambah");
+            tombolNormal();
             bersih();
             nonota.setText(null);
             tgltransaksi.setText(null);
         }
     }//GEN-LAST:event_btntambahobatActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtcari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcari1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtcari1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -707,7 +753,6 @@ public class penjualan extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jmlbeli;
     private javax.swing.JTextField kdobat;
     private javax.swing.JTextField nmobat;
@@ -718,7 +763,10 @@ public class penjualan extends javax.swing.JFrame {
     private javax.swing.JTextField tstok;
     private javax.swing.JTextField ttotal;
     private javax.swing.JTextField ttunai;
+    private javax.swing.JTextField txtcari1;
     // End of variables declaration//GEN-END:variables
+
+private DefaultTableModel model;
 belicontrol bc = new belicontrol();
 ObatControl ob = new ObatControl();
 

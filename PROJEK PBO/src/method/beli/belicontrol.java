@@ -35,7 +35,7 @@ public class belicontrol {
     
     public List tampil() {
         List logBeli = new ArrayList();
-        sql = "select no_nota, tanggal_beli, nama_pembeli, total, tunai, kembali, from tbbeli order by idbeli asc";
+        sql = "select no_nota, tanggal_beli, nama_pembeli, total, tunai, kembali from tbbeli order by idbeli asc";
         try {
             rs = st.executeQuery(sql);
             while (rs.next()) {
