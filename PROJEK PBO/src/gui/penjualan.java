@@ -615,7 +615,27 @@ public class penjualan extends javax.swing.JFrame {
     }//GEN-LAST:event_btnsimpanActionPerformed
 
     private void btntambahobatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntambahobatActionPerformed
-        // TODO add your handling code here:
+        if(btntambahobat.getText().equalsIgnoreCase("Tambah")) {
+            btntambahobat.setText("Batal");
+                siapIsi(true);
+                bersih();
+                hiden();
+                tampiltanggal();
+                buatNoNota();
+                nmpembeli.requestFocus();
+                btnsimpan.setEnabled(false);
+                btntambah.setEnabled(false);
+                btnkurang.setEnabled(false);
+                btnpilih.setEnabled(false);
+                tgltransaksi.setEditable(false);
+        } else {
+            bersih();
+            siapIsi(false);
+            btntambahobat.setText("tambah");
+            bersih();
+            nonota.setText(null);
+            tgltransaksi.setText(null);
+        }
     }//GEN-LAST:event_btntambahobatActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

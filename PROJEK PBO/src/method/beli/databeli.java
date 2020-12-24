@@ -12,7 +12,7 @@ package method.beli;
 public class databeli {
     private String no_nota, tanggal_beli, nama_pembeli;
     
-    public String getno_nota() {
+    public String getnonota() {
         return no_nota;
     }
     
