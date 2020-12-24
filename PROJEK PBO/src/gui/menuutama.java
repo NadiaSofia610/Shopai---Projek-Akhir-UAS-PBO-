@@ -68,6 +68,7 @@ public class menuutama extends javax.swing.JFrame {
                 lbl_tgl.setText(tgl.format(dt));
             }
         };
+        
         new javax.swing.Timer(1000, (java.awt.event.ActionListener) taskPerformer).start();
     }
     

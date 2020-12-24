@@ -7,6 +7,7 @@ package gui;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import method.login.datapengguna;
 import method.login.penggunacontrol;
@@ -255,7 +256,28 @@ public class Pengguna extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    if (txtid.getText().isEmpty() || txtuser.getText().isEmpty() || txtpass.getText().isEmpty() || cmbhak.toString().equals(null)) {
+        JOptionPane.showMessageDialog(null, "Data tidak boleh kosong", "pesan", JOptionPane.WARNING_MESSAGE);
+        } else {
+            // validasi password dan ketik ulang password
+            if (txtpass.getText() == null ? txtupass.getText() != null : !txtpass.getText().equals(txtupass)) {
+                JOptionPane.showMessageDialog(null, "Password tidak sama periksa kembali", "pesan", JOptionPane.WARNING_MESSAGE);
+                txtpass.requestFocus();
+            } else {
+                //validasi idpengguna
+                listpengguna=pc.cariid(Integer.parseInt(txtid.getText()));
+                if (listpengguna.size()==1) {
+                JOptionPane.showMessageDialog(null, "Pengguna telah digunakan user lain", "pesan", JOptionPane.WARNING_MESSAGE);
+                txtid.requestFocus();
+                } else {
+                    try{
+                    
+                    } catch (Exception e) {
+                    
+                    }
+                }
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
