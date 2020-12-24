@@ -303,6 +303,11 @@ public class menuutama extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconmenu/icons8_Cash_in_Hand_25px.png"))); // NOI18N
         jLabel6.setText("Laporan Obat");
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -809,6 +814,15 @@ public class menuutama extends javax.swing.JFrame {
             Logger.getLogger(menuutama.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jPanel5MouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+       jDesktopPane1.removeAll();
+       jDesktopPane1.repaint();
+       CetakLaporan1 cl1 = new CetakLaporan1();
+       jDesktopPane1.add(cl1);
+       cl1.setVisible(true);
+       
+    }//GEN-LAST:event_jLabel6MouseClicked
 
     /**
      * @param args the command line arguments
