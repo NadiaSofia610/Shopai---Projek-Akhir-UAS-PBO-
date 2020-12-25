@@ -38,7 +38,6 @@ public class penjualan extends javax.swing.JFrame {
     private void siapIsi(boolean a) {
         tgltransaksi.setEnabled(a);
         nonota.setEnabled(a);
-        nmpembeli.setEditable(a);
         kdobat.setEnabled(a);
         nmobat.setEditable(a);
         hrgjual.setEditable(a);  
@@ -83,7 +82,6 @@ public class penjualan extends javax.swing.JFrame {
     public void tombolHiden() {
         btntambah.setEnabled(false);
         btnkurang.setEnabled(false);
-        btnsimpan.setEnabled(false);
         tgltransaksi.setEnabled(false);
     }
     
@@ -171,29 +169,18 @@ public class penjualan extends javax.swing.JFrame {
         jDialog1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel4.setBackground(new java.awt.Color(170, 0, 0));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Data Obat");
+        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 22, 660, 78));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 1050, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-
-        jDialog1.getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, -1));
+        jDialog1.getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, 660, 120));
 
         jPanel5.setBackground(new java.awt.Color(44, 62, 80));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -206,11 +193,19 @@ public class penjualan extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
+
+        jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 47, 610, 110));
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Cari Data Obat :");
+        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 166, 29));
 
         txtcari1.setBackground(new java.awt.Color(44, 62, 80));
         txtcari1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -221,34 +216,14 @@ public class penjualan extends javax.swing.JFrame {
                 txtcari1ActionPerformed(evt);
             }
         });
+        txtcari1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtcari1KeyReleased(evt);
+            }
+        });
+        jPanel5.add(txtcari1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 400, 29));
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 976, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
-                        .addComponent(txtcari1)))
-                .addContainerGap(38, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-                    .addComponent(txtcari1))
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
-
-        jDialog1.getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1050, 540));
+        jDialog1.getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 660, 240));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -687,6 +662,32 @@ public class penjualan extends javax.swing.JFrame {
     private void txtcari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcari1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtcari1ActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        int baris = jTable2.getSelectedRow();
+        kdobat.setText(jTable2.getModel().getValueAt(baris, 0).toString());
+        nmobat.setText(jTable2.getModel().getValueAt(baris, 1).toString());
+        tstok.setText(jTable2.getModel().getValueAt(baris, 2).toString());
+        hrgjual.setText(jTable2.getModel().getValueAt(baris, 3).toString());
+        jmlbeli.requestFocus();
+        jDialog1.setVisible(false);
+    }//GEN-LAST:event_jTable2MouseClicked
+
+    private void txtcari1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcari1KeyReleased
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
+        ListObat = ob.cariObat(txtcari1.getText());
+        
+        for(int x=0; x<ListObat.size(); x++) {
+            Object[] data = new Object[5];
+            data[0] = ListObat.get(x).getKdobat();
+            data[1] = ListObat.get(x).getNmobat();
+            data[2] = ListObat.get(x).getSatuan();
+            data[3] = ListObat.get(x).getJmlstok();
+            data[4] = ListObat.get(x).getHrgbeli();
+            model.addRow(data);
+        }
+    }//GEN-LAST:event_txtcari1KeyReleased
 
     /**
      * @param args the command line arguments
