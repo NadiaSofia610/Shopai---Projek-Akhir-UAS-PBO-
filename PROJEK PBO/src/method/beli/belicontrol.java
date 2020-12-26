@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author HP
+ * @author ASUS
  */
 public class belicontrol {
     Connection con = null;
@@ -33,23 +33,23 @@ public class belicontrol {
         }
     }
     
-    public List tampil() {
-        List logBeli = new ArrayList();
+    public List tampil(){
+        List logBeli =  new ArrayList();
         sql = "select no_nota, tanggal_beli, nama_pembeli, total, tunai, kembali from tbbeli order by idbeli asc";
-        try {
+        try{
             rs = st.executeQuery(sql);
-            while (rs.next()) {
+            while(rs.next()){
                 databeli db = new databeli();
-                db.setno_nota(rs.getString("no_nota"));
-                db.settanggal(rs.getString("tanggal_beli"));
+                db.setnonota(rs.getString("no_nota"));
+                db.settanggal(rs.getString("tanggal"));
                 db.setnamapembeli(rs.getString("nama_pembeli"));
                 db.settotal(rs.getInt("total"));
                 db.settunai(rs.getInt("tunai"));
                 db.setkembali(rs.getInt("kembali"));
                 logBeli.add(db);
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Terjadi kesalahan tampil, pada: \n" + e);
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan tampil, pada : \n"+e);
         }
         return logBeli;
     }

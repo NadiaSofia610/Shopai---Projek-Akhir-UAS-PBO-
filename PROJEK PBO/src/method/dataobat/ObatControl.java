@@ -25,7 +25,7 @@ public class ObatControl {
     String sql = null;
     
     public ObatControl(){
-        try {
+        try{
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbapotek", "root", "");
             st = con.createStatement();
@@ -61,7 +61,7 @@ public class ObatControl {
         sql = "insert into tbdataobat (kode_obat, nama_obat, satuan, jumlah_stok, harga_kontrak, harga_beli) values('"+e.getKdobat()+"','"+e.getNmobat()
                 +"','"+e.getSatuan()+"','"+e.getJmlstok()+"','"+e.getHrgkontrak()+"','"+e.getHrgbeli()+"')";
         int hasil = 0;
-        try {
+        try{
             hasil = st.executeUpdate(sql);
         }catch(Exception a){
             JOptionPane.showMessageDialog(null, "Terjadi Kesalahan pada : \n"+a);
@@ -73,7 +73,7 @@ public class ObatControl {
         sql = "update tbdataobat set nama_obat='"+e.getNmobat()+"',satuan='"+e.getSatuan()+"',jumlah_stok='"+e.getJmlstok()
                 +"',harga_kontrak='"+e.getHrgkontrak()+"',harga_beli='"+e.getHrgbeli()+"'where kode_obat='"+e.getKdobat()+"'";
         int hasil = 0;
-        try {
+        try{
             hasil = st.executeUpdate(sql);
         } catch (Exception a){
             JOptionPane.showMessageDialog(null, "Terjadi Kesalahan pada : \n"+a);
@@ -85,7 +85,7 @@ public class ObatControl {
         List logObat = new ArrayList();
         sql = "select kode_obat, nama_obat, satuan, jumlah_stok, harga_kontrak, harga_beli from tbdataobat where satuan "
                 +"like '%"+cari+"' or nama_obat like '%"+cari+"%'";
-        try {
+        try{
             rs=st.executeQuery(sql);
             while(rs.next()){
                 DataObat Do = new DataObat();
@@ -106,7 +106,7 @@ public class ObatControl {
     public int deleteObat(DataObat e){
         sql="delete from tbdataobat where kode_obat = '"+e.getKdobat()+"'";
         int hasil=0;
-        try {
+        try{
             hasil = st.executeUpdate(sql);
         } catch(Exception a){
             JOptionPane.showMessageDialog(null, "Terjadi Kesalahan pada : \n"+a);
@@ -116,33 +116,39 @@ public class ObatControl {
     
     public int getJumlahObat() throws SQLException{
         sql = "select count(*) as jumlah_obat "+ "from tbdataobat";
+        rs = st.executeQuery(sql);
         int jumlah;
-        try {
-            rs = st.executeQuery(sql);
-            while(rs.next()){
-                jumlah = rs.getInt("jumlah_obat");
-                return jumlah;
-            }
-        } catch (Exception a) {
-            JOptionPane.showMessageDialog(null, "Terjadi Kesalahan pada : \n"+a);
+        while(rs.next()){
+            jumlah = rs.getInt("jumlah_obat");
+            return jumlah;
         }
         return 0;
     }
     
-    public List tampilSatuan() {
+    public List tampilSatuan(){
         List logObat = new ArrayList();
         sql = "select distinct(satuan) from tbdataobat order by idobat asc";
-        try {
+        try{
             rs = st.executeQuery(sql);
-            while(rs.next()) {
+            while(rs.next()){
                 DataObat eb = new DataObat();
                 eb.setSatuan(rs.getString("satuan"));
                 logObat.add(eb);
             }
-        } catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Terjadi Kesalahan pada : \n"+e);
+        } catch(Exception a){
+            JOptionPane.showMessageDialog(null, "Terjadi Kesalahan pada : \n"+a);
         }
         return logObat;
+    }
+    
+    public int updateStok(int stok,String Kdobat){
+        sql = "update tbdataobat set jumlah_stok='"+stok+" where kode_obat ='"+Kdobat+"'";
+        int hasil = 0;
+        try{
+            hasil = st.executeUpdate(sql);
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Terjadi Kesalahan pada : \n"+e);
         }
+        return hasil;
     }
 }

@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author HP
+ * @author ASUS
  */
 public class penjualancontrol {
     Connection con = null;
@@ -33,12 +33,13 @@ public class penjualancontrol {
         }
     }
     
-    public List CekObat(String Nonota, String Kdobat) {
-        List logDetailBeli = new ArrayList();
-        sql = "select no_nota, kode_obat, nama_obat, harga_jual, jumlah_beli, total_bayar from tbpenjualan where no_nota='"+Nonota+"' and kode_obat='"+Kdobat+"'";
+    public List CekObat(String Nonota, String Kdobat){
+        List logDetailBeli =  new ArrayList();
+        sql = "select no_nota, kode_obat, nama_obat, harga_jual, jumlah_beli, total_bayar from tbpenjualan where no_nota = '"
+                +Nonota+"' and kode_obat='"+Kdobat+"'";
         try{
             rs = st.executeQuery(sql);
-            while(rs.next()) {
+            while(rs.next()){
                 DataPenjualan dp = new DataPenjualan();
                 dp.setKdobat(rs.getString("kode_obat"));
                 dp.setNmobat(rs.getString("nama_obat"));
@@ -47,21 +48,43 @@ public class penjualancontrol {
                 dp.setTbayar(rs.getInt("total_bayar"));
                 logDetailBeli.add(dp);
             }
-        } catch(Exception e) {
-            JOptionPane.showMessageDialog(null, "Terjadi Kesalahan Cek Barang : \n"+e);
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan tampil, pada : \n"+e);
         }
         return logDetailBeli;
     }
     
-    public int tambahpenjualan(DataPenjualan a) {
-        sql = "insert into tbpenjualan values('"+a.getNonota()+"', '"+a.getKdobat()+"', '"+a.getNmobat()+"', '"+a.getHrgjual()+"', '"+a.getJmlbeli()+"', '"+a.getTbayar()+"')";
+    public int tambahpenjualan(DataPenjualan a){
+        sql = "insert into tbpenjualan values ('"+a.getNonota()+"','"+a.getKdobat()+"','"+a.getNmobat()+"','"+a.getHrgjual()+"','"
+                +a.getJmlbeli()+"','"+a.getTbayar()+"')";
         int hasil = 0;
-        try{
-            hasil = st.executeUpdate(sql);
-        } catch(Exception e) {
-            JOptionPane.showMessageDialog(null, "Terjadi Kesalahan Pada : \n"+e);
-        }
-        return hasil;
-    }
+            try{
+                hasil = st.executeUpdate(sql);
+            } catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada : \n"+e);
+            }
+            return hasil;
     
+    }
+
+    public List cariObat(String cari){
+        List logCari =  new ArrayList();
+        sql = "select no_nota, kode_obat, nama_obat, harga_jual, harga_beli, jumlah_beli, total_bayar from tbpenjualan where like '%"
+                +cari+"%' or nama_obat like ='%"+cari+"%'";
+        try{
+            rs = st.executeQuery(sql);
+            while(rs.next()){
+                DataPenjualan dp = new DataPenjualan();
+                dp.setKdobat(rs.getString("kode_obat"));
+                dp.setNmobat(rs.getString("nama_obat"));
+                dp.setHrgjual(rs.getInt("harga_jual"));
+                dp.setJmlbeli(rs.getInt("jumlah_beli"));
+                dp.setTbayar(rs.getInt("total_bayar"));
+                logCari.add(dp);
+            }
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan, pada : \n"+e);
+        }
+        return logCari;
+    }
 }

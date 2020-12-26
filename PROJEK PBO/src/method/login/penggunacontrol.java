@@ -28,7 +28,7 @@ public class penggunacontrol {
     public penggunacontrol(){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbapotek", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbapotek","root","");
             st=con.createStatement();
         } catch(Exception e){
             JOptionPane.showMessageDialog(null, "Koneksi Database Gagal, Terjadi Kesalahan Pada : \n" + e);

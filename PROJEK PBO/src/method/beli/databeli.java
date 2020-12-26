@@ -7,58 +7,63 @@ package method.beli;
 
 /**
  *
- * @author HP
+ * @author ASUS
  */
 public class databeli {
     private String no_nota, tanggal_beli, nama_pembeli;
     
-    public String getnonota() {
+    public String getnonota(){
         return no_nota;
     }
     
-    public void setno_nota (String no_nota) {
+    public void setnonota(String no_nota){
         this.no_nota = no_nota;
     }
     
-    public String gettanggal() {
+    public String gettanggal(){
         return tanggal_beli;
     }
     
-    public void settanggal(String tanggal) {
+    public void settanggal(String tanggal){
         this.tanggal_beli = tanggal_beli;
     }
     
-    public String getnamapembeli() {
+    public String getnamapembeli(){
         return nama_pembeli;
     }
     
-    public void setnamapembeli(String nama_pembeli) {
+    public void setnamapembeli(String nama_pembeli){
         this.nama_pembeli = nama_pembeli;
     }
     
     int total, tunai, kembali;
     
-    public int gettotal() {
+    public int gettotal(){
         return total;
     }
     
-    public void settotal(int total) {
+    public void settotal(int total){
         this.total = total;
+    } 
+    
+    public int total(){
+        return total;
     }
     
-    public int gettunai() {
+    public int gettunai(){
         return tunai;
     }
     
-    public void settunai(int tunai) {
+    public void settunai(int tunai ){
         this.tunai = tunai;
     }
     
-    public int getkembali() {
+    public int getkembali(){
         return kembali;
     }
     
-    public void setkembali(int kembali) {
+    public void setkembali(int kembali){
         this.kembali = kembali;
     }
+    
 }
