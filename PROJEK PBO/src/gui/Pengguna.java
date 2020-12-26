@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import method.login.Enkripsi;
 import method.login.datapengguna;
 import method.login.penggunacontrol;
 
@@ -54,6 +55,13 @@ public class Pengguna extends javax.swing.JInternalFrame {
             data[3] = listpengguna.get(x).gethakakses();
             model.addRow(data);
         }
+    }
+    
+    private void bersih() {
+        txtuser.setText(null);
+        txtpass.setText(null);
+        txtupass.setText(null);
+        cmbhak.setSelectedItem("");
     }
 
     /**
@@ -165,6 +173,11 @@ public class Pengguna extends javax.swing.JInternalFrame {
 
         jButton2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jButton2.setText("Batal");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jButton3.setText("Hapus");
@@ -185,6 +198,11 @@ public class Pengguna extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -260,7 +278,7 @@ public class Pengguna extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(null, "Data tidak boleh kosong", "pesan", JOptionPane.WARNING_MESSAGE);
         } else {
             // validasi password dan ketik ulang password
-            if (txtpass.getText() == null ? txtupass.getText() != null : !txtpass.getText().equals(txtupass)) {
+            if (txtpass.getText() == null ? txtupass.getText() != null : !txtpass.getText().equals(txtupass.getText())) {
                 JOptionPane.showMessageDialog(null, "Password tidak sama periksa kembali", "pesan", JOptionPane.WARNING_MESSAGE);
                 txtpass.requestFocus();
             } else {
@@ -271,9 +289,20 @@ public class Pengguna extends javax.swing.JInternalFrame {
                 txtid.requestFocus();
                 } else {
                     try{
-                    
+                        dp.setidpengguna(Integer.parseInt(txtid.getText()));
+                        dp.setusername(txtuser.getText());
+                        dp.setpassword(Enkripsi.getSHA1(txtpass.getText()));
+                        dp.sethakakses(cmbhak.getSelectedItem().toString());
+                        if (pc.tambah(dp)==1) {
+                            JOptionPane.showMessageDialog(null, "Data berhasil disimpan");
+                            buattable();
+                            showtable();    
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Data gagal disimpan");
+                        }
+                        bersih();
                     } catch (Exception e) {
-                    
+                        JOptionPane.showMessageDialog(null, "Tidak dapat enkripsi password");
                     }
                 }
             }
@@ -281,8 +310,30 @@ public class Pengguna extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+    dp.setidpengguna(Integer.parseInt(txtid.getText()));
+    int pesan = JOptionPane.showConfirmDialog(null, "Data akan dihapus ?", "Konfirmasi", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (pesan==JOptionPane.YES_NO_OPTION) {
+            if (pc.deletepengguna(dp)==1) {
+                buattable();
+                showtable();
+                bersih();
+            }else {
+                JOptionPane.showMessageDialog(null, "Hapus data gagal");
+            }
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+    int baris = jTable1.getSelectedRow();
+    txtid.setText(jTable1.getModel().getValueAt(baris, 0).toString());
+    txtuser.setText(jTable1.getModel().getValueAt(baris, 1).toString());
+    txtpass.setText(jTable1.getModel().getValueAt(baris, 2).toString());
+    cmbhak.setSelectedItem(jTable1.getModel().getValueAt(baris, 3).toString());
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    bersih();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

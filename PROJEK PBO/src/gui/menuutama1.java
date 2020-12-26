@@ -11,6 +11,7 @@ import java.util.Date;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
+import projek.Loading;
 
 /**
  *
@@ -368,6 +369,9 @@ public class menuutama1 extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jPanel13MouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel13MousePressed(evt);
+            }
         });
 
         jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -654,6 +658,14 @@ public class menuutama1 extends javax.swing.JFrame {
     private void jLabel13MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MousePressed
         getbackgroundcolor();
     }//GEN-LAST:event_jLabel13MousePressed
+
+    private void jPanel13MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel13MousePressed
+    jDesktopPane1.removeAll();
+    jDesktopPane1.repaint();
+    this.setVisible(false);
+    Loading ld = new Loading();
+    ld.setVisible(true);
+    }//GEN-LAST:event_jPanel13MousePressed
 
     /**
      * @param args the command line arguments
