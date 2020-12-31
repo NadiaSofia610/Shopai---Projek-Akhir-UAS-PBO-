@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat;
 
 /**
  *
- * @author Fajar
+ * @author doaibu
  */
 public class menuutama extends javax.swing.JFrame {
 
