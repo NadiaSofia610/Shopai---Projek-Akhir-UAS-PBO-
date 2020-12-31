@@ -42,7 +42,7 @@ import apotek.koneksi;
 
 /**
  *
- * @author Fajar
+ * @author doaibu
  */
 public class databarang extends javax.swing.JFrame {
     public Statement st;
