@@ -35,7 +35,7 @@ import apotek.koneksi;
 
 /**
  *
- * @author Fajar
+ * @author doaibu
  */
 public class transaksi extends javax.swing.JFrame {
 private DefaultTableModel model;
