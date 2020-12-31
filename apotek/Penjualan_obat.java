@@ -7,7 +7,7 @@ package apotek;
 
 /**
  *
- * @author Fajar
+ * @author doaibu
  */
 public class Penjualan_obat {
 
