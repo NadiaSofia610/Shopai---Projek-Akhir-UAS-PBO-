@@ -14,7 +14,7 @@ import apotek.koneksi;
 
 /**
  *
- * @author Fajar
+ * @author doaibu
  */
 public class login extends javax.swing.JFrame {
 
