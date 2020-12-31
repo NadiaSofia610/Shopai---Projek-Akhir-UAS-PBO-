@@ -20,7 +20,7 @@ import apotek.koneksi;
 
 /**
  *
- * @author Fajar
+ * @author doaibu
  */
 public class laporan extends javax.swing.JFrame {
 
