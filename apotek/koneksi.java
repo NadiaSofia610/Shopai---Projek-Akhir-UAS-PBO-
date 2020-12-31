@@ -11,7 +11,7 @@ import java.sql.Statement;
 
 /**
  *
- * @author Fajar
+ * @author doaibu
  */
 public class koneksi  {
     static Connection con;
